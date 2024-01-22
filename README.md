@@ -7,6 +7,9 @@ Opis: Webbscrapping portali streamingowych to narzędzie, które pozwala na spra
 Autorzy: Maksymilian Umiński, Przemysław Wałkuski
 Licencje: 
 RStudio Desktop w wersji darmowej jest ogólnie dostępne do pobrania, instalacji i użytkowania bezpłatnie. Darmowa wersja jest objęta licencją otwartego oprogramowania GPL (General Public License). Warunki licencji GPL umożliwiają swobodne używanie, modyfikowanie i rozpowszechnianie oprogramowania, pod warunkiem zachowania pewnych zasad, takich jak udzielanie innym użytkownikom tych samych swobód. Oznacza to, że stworzony kod jest udostępniony do powszechnego użytkowania.
+
+Licencja - CC BY-NC-SA 4.0
+
 Pakiet rvest jest udostępniany na licencji MIT. Licencja MIT to liberalna licencja typu open source, która umożliwia używanie, modyfikowanie i rozpowszechnianie oprogramowania pod warunkiem dołączenia oryginalnych informacji o prawach autorskich i zastrzeżeń.
 
 3.. Specyfikacja wymagań:
@@ -14,7 +17,7 @@ Stałe zaciąganie danych z bazy, tzw. „monitorowanie” portalu w celu odnajd
 Porównywanie watch listy z bazą filmów, gdzie otrzymany wynik jest informacją - JAKI film oraz na JAKIEJ platformie się znajduje.
 
 4.. Architektura środowiska
-- Rstudio -RStudio to środowisko programistyczne do języka programowania R. Język R jest używany do analizy danych, statystyki, wizualizacji danych i innych zastosowań związanych z analizą danych. RStudio zapewnia rozbudowane narzędzia, które ułatwiają pracę z językiem R, zarządzanie projektem, analizę danych i tworzenie raportów.
+- Rstudio - RStudio to środowisko programistyczne do języka programowania R. Język R jest używany do analizy danych, statystyki, wizualizacji danych i innych zastosowań związanych z analizą danych. RStudio zapewnia rozbudowane narzędzia, które ułatwiają pracę z językiem R, zarządzanie projektem, analizę danych i tworzenie raportów.
   
 - Rvest package - Biblioteka programu R, która służy do web scrapingu, czyli ekstrakcji danych z stron internetowych. Pozwala na łatwe pobieranie i analizowanie danych z witryn online.
   
