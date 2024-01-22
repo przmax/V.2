@@ -1,0 +1,63 @@
+---
+title: "Projekt inżynieria oprogramowania"
+author: "Przemysław Wałkuski, Maksymilian Umiński"
+date: "2023-12-17"
+output: html_document
+---
+
+#Libraries 
+```{r}
+library(rvest)
+```
+
+#Owned subscriptions
+```{r}
+#choose from: netflix,disney,hbomax,skyshowtime,amazon,cineman,polsatboxgo,rakuten,itunes,player,vodpl,tvpvod,appletv,playnow,canalplus,cdapremium,ninateka,ekinopodbaranami,mojeekino,nowehoryzonty,filmbox,piecsmakow,mdag
+
+subs <- ('netflix,disney,hbomax,amazon')
+```
+
+
+#Watchlist
+```{r}
+#insert herepath to Your watchlist exported from imdb
+
+watchlist <- read.csv("...")
+```
+
+
+#Scrapping
+```{r}
+#scrap of first site 
+scrap_html <- read_html(paste('https://upflix.pl/', subs ,'/film/?sort=ostatnio-dodane', sep = ""))
+new_titles <- as.matrix(scrap_html  %>% html_elements("img") %>% html_attr("alt"))
+scores <- as.matrix(scrap_html  %>% html_elements(".score") %>% html_text())
+year <- as.matrix(scrap_html  %>% html_elements(".year") %>% html_text())
+
+new_base <- as.data.frame(cbind(new_titles, scores, year))
+
+#scrap for next x sites 
+for (i in 2:5) { #start for
+  scrap_html <- read_html(paste('https://upflix.pl/', subs ,'/film/', paste('p', i, sep = "") ,'?search=&sort=ostatnio-dodane', sep = ""))
+
+  new_titles <- as.matrix(scrap_html  %>% html_elements("img") %>% html_attr("alt"))
+  scores <- as.matrix(scrap_html  %>% html_elements(".score") %>% html_text())
+  year <- as.matrix(scrap_html  %>% html_elements(".year") %>% html_text())
+  new_base <- rbind(new_base, as.data.frame(cbind(new_titles, scores, year)))
+  } #end: for
+
+#adding titles to columns
+colnames(new_base) <- c('title', 'score', 'year')
+
+#standarization of titles
+new_base$title <- sub('.*/ ', "", new_base$title)
+```
+
+#Checking watchlist
+```{r}
+#comparison of new titles with titles on watchlist
+to_watch <- merge(new_base, watchlist, by.x = "title", by.y = "Title")
+to_watch
+```
+
+
